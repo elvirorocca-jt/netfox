@@ -22,6 +22,7 @@ let nfxVersion = podPlistVersion() ?? "0"
 
 @objc
 open class NFX: NSObject {
+    public var enablePrintLogs = false
     
     // MARK: - Properties
     #if os(OSX)
@@ -103,7 +104,9 @@ open class NFX: NSObject {
     }
     
     fileprivate func showMessage(_ msg: String) {
-        print("netfox \(nfxVersion) - [https://github.com/kasketis/netfox]: \(msg)")
+        if enablePrintLogs {
+            print("netfox \(nfxVersion) - [https://github.com/kasketis/netfox]: \(msg)")
+        }
     }
     
     internal func isEnabled() -> Bool {
